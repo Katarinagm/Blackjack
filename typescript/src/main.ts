@@ -11,7 +11,7 @@ const blackJack = (deck: Deck, player: Array<Card | undefined>) => {
   var total = player.reduce((total, card) => total + (card?.Value || 0), 0);
   while(total > 21){
     //finds ace with value of 11
-    const ace = player.find( card => card?.CardLetter === 'A' && card?.Value === 11)
+    const ace = player.find( card => card?.CardValue === 'A' && card?.Value === 11)
     //if no ace, break
     if(!ace){
       break;
@@ -38,7 +38,7 @@ async function main(whenFinished: () => void) {
   var dealerCard = deck.cards.pop();
   dealer.push(dealerCard);
 
-  console.log(`Dealer's card is ${dealerCard?.Suit} ${dealerCard?.CardLetter}`)
+  console.log(`Dealer's card is ${dealerCard?.Suit} ${dealerCard?.CardValue}`)
   //var count = 0;
   while (playing) {
     var card = deck.cards.pop();
@@ -54,7 +54,7 @@ async function main(whenFinished: () => void) {
 
     hand.push(card); 
     var total = blackJack(deck, hand)
-    console.log(`Player hit with ${card?.Suit} ${card?.CardLetter}. Total is ${total}`);
+    console.log(`Player hit with ${card?.Suit} ${card?.CardValue}. Total is ${total}`);
     //1. If player's total over 21, break 
     if (total>21){
       console.log("Player lost")
@@ -69,7 +69,7 @@ async function main(whenFinished: () => void) {
           dealerCard = deck.cards.pop();
           dealer.push(dealerCard);
           var dealerTotal = blackJack(deck, dealer)
-          console.log(`Dealer hit with ${dealerCard?.Suit} ${dealerCard?.CardLetter}. Total is ${dealerTotal}`);
+          console.log(`Dealer hit with ${dealerCard?.Suit} ${dealerCard?.CardValue}. Total is ${dealerTotal}`);
           if (dealerTotal > 16){
             break;
           }

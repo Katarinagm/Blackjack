@@ -10,7 +10,7 @@ export class Card {
 
 
   // 2. Returns cards with rank (11)Jack, (12)Queen, (13) King and (1)Ace as J, Q, K, A
-  public get CardLetter() {
+  public get CardValue() {
     if(this.rank === 13) {
       return "K" 
     }

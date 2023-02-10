@@ -55,7 +55,7 @@ async function main(whenFinished: () => void) {
     hand.push(card); 
     var total = blackJack(deck, hand)
     console.log(`Player hit with ${card?.Suit} ${card?.CardLetter}. Total is ${total}`);
-    //1. If total over 21, break 
+    //1. If player's total over 21, break 
     if (total>21){
       console.log("Player lost")
       break;
@@ -64,7 +64,7 @@ async function main(whenFinished: () => void) {
     await readConsole.questionAsync("Stand, Hit (s/h) \n").then((read) => {
       if (read !== "h") {
         let dealerPlaying = true;
-        //Dealder draws a card until they have 17 points or more
+        //Dealer draws a card until they have 17 points or more
         while(dealerPlaying){
           dealerCard = deck.cards.pop();
           dealer.push(dealerCard);
